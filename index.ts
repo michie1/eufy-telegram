@@ -44,7 +44,9 @@ function setDoorbellEventHandlers(doorbell: DoorbellCamera) {
   );
   doorbell.on('rings', (device, detected) => {
     console.log('ringing Detected:', detected, device);
-    sendMessage(`Ringing ${detected ? 'Yes' : 'No'}`);
+    if (detected) {
+      sendMessage(`Ringing`);
+    }
   });
   doorbell.on('property changed', (value, property) => {
     console.log('property:', property);
